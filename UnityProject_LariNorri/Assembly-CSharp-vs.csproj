@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FireballScript.cs" />
+     <Compile Include="Assets\LaunchFireBallScript.cs" />
      <Compile Include="Assets\RunGUI.cs" />
      <Compile Include="Assets\SpinMenuCam.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />

@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/RunGUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/FireballScript.cs">
     <Files>
       <File FileName="Assets/RunGUI.cs" Line="24" Column="52" />
+      <File FileName="Assets/SpinMenuCam.cs" Line="9" Column="42" />
+      <File FileName="Assets/FireballScript.cs" Line="20" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
