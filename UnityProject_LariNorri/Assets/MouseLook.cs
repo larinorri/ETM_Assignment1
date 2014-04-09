@@ -17,11 +17,15 @@ using System.Collections;
 [AddComponentMenu("Camera-Control/Mouse Look")]
 public class MouseLook : MonoBehaviour {
 
+	// Lnorri This is a base unity script customized to support tilt sensors & pausing for game play
+	private InGameGUI gameLogic;
+
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
-	public float sensitivityX = 15F;
-	public float sensitivityY = 15F;
+	public float sensitivityX = 8F;
+	public float sensitivityY = 8F;
 
+	// limit rotation to look ahead
 	public float minimumX = -360F;
 	public float maximumX = 360F;
 
@@ -29,13 +33,20 @@ public class MouseLook : MonoBehaviour {
 	public float maximumY = 60F;
 
 	float rotationY = 0F;
+	float rotationX = 0F;
 
 	void Update ()
 	{
+		// freeze the camera when the game ends
+		if (gameLogic.GamePaused ()) 
+			return;
+
 		if (axes == RotationAxes.MouseXAndY)
 		{
-			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-			
+			//float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+			rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+			rotationX = Mathf.Clamp (rotationX, minimumX, maximumX); // had to add this
+
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
@@ -56,6 +67,10 @@ public class MouseLook : MonoBehaviour {
 	
 	void Start ()
 	{
+		// link to logic contoller
+		GameObject search = GameObject.Find("PlayLogic");
+		gameLogic = search.GetComponent<InGameGUI>();
+
 		// Make the rigid body not change rotation
 		if (rigidbody)
 			rigidbody.freezeRotation = true;

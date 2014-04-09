@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\FireballScript.cs" />
+     <Compile Include="Assets\InGameGUI.cs" />
      <Compile Include="Assets\LaunchFireBallScript.cs" />
+     <Compile Include="Assets\MouseLook.cs" />
      <Compile Include="Assets\RunGUI.cs" />
      <Compile Include="Assets\SpinMenuCam.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
@@ -63,8 +65,6 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{15075ED9-F30B-8582-3085-08B5DEA02F0A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
       <Project>{B4E49FE3-90B3-1281-239E-382D1B5FA0B7}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
