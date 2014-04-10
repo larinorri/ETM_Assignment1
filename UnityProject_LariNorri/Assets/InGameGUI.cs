@@ -17,6 +17,7 @@ public class InGameGUI : MonoBehaviour {
 	void Start() {
 		countDown = 60.999f; // 1 minute
 		winnar = false;
+		Input.location.Start (1,1);
 	}
 
 	// Use this for initialization
@@ -26,7 +27,25 @@ public class InGameGUI : MonoBehaviour {
 		int centerX = Screen.width / 2;
 		int centerY = Screen.height / 2;
 		string title = "Knock the Smileys off the Platform!!!";
+
+		// display GPS data in game HUD
+		// using the GPS feature
+		GUI.color = new Color(0,0,0);
+		GUI.skin.label.fontSize = 20;
+		GUI.skin.label.alignment = TextAnchor.MiddleLeft;
 		
+		string gpsStatus = (Input.location.isEnabledByUser) ? "Enabled" : "Disabled";
+		GUI.Label(new Rect (Screen.width - 150, Screen.height - 30, 150, 30), "GPS is " + gpsStatus);
+		
+		if (Input.location.isEnabledByUser) 
+		{
+			// display current results
+			GUI.Label(new Rect (5, Screen.height - 60, 200, 40), "Latitude:\t\t" + 
+			          Input.location.lastData.latitude.ToString());
+			GUI.Label(new Rect (5, Screen.height - 35, 200, 40), "Longitude:\t" + 
+			          Input.location.lastData.longitude.ToString());
+		}
+	
 		// build components for main menu
 		GUI.color = new Color(1,0,0);
 		
@@ -35,7 +54,7 @@ public class InGameGUI : MonoBehaviour {
 		GUI.skin.label.fontSize = 20;
 		GUI.Label(new Rect (centerX - 300, centerY - 190, 600, 50), title);
 
-		// check if you won!
+		// clheck if you won!
 		if (countDown > 0 && 
 		    Moe.transform.position.y < 0 && 
 			Larry.transform.position.y < 0 &&
