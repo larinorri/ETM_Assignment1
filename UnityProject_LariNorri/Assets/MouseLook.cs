@@ -41,27 +41,42 @@ public class MouseLook : MonoBehaviour {
 		if (gameLogic.GamePaused ()) 
 			return;
 
-		if (axes == RotationAxes.MouseXAndY)
+		// if no tilt information is present we use mouse/finger dragging input
+		if(Input.acceleration.magnitude != 0)
 		{
 			//float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-			rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+			rotationX += Input.acceleration.x * sensitivityX;
 			rotationX = Mathf.Clamp (rotationX, minimumX, maximumX); // had to add this
-
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+			
+			rotationY += Input.acceleration.y * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
 			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 		}
-		else if (axes == RotationAxes.MouseX)
+		else // use mouse/finger for camera
 		{
-			transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
-		}
-		else
-		{
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-			
-			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+			if (axes == RotationAxes.MouseXAndY) // this is the only one that gets used
+			{
+				//float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+				rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+				rotationX = Mathf.Clamp (rotationX, minimumX, maximumX); // had to add this
+
+				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+				rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+				
+				transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+			}
+			else if (axes == RotationAxes.MouseX)
+			{
+				transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+			}
+			else
+			{
+				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+				rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+				
+				transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+			}
 		}
 	}
 	

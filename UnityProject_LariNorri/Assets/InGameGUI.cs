@@ -45,6 +45,12 @@ public class InGameGUI : MonoBehaviour {
 			GUI.Label(new Rect (5, Screen.height - 35, 200, 40), "Longitude:\t" + 
 			          Input.location.lastData.longitude.ToString());
 		}
+
+		// display accellerometer vital data
+		GUI.skin.label.fontSize = 15;
+		GUI.Label(new Rect (Screen.width/2 - 100, Screen.height - 25, 200, 25), "Device Tilt: X " +
+		          Input.acceleration.x.ToString() + ", Y " + Input.acceleration.y.ToString() + 
+		          ", Z " + Input.acceleration.z.ToString());
 	
 		// build components for main menu
 		GUI.color = new Color(1,0,0);

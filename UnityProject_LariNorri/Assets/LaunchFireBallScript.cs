@@ -16,7 +16,7 @@ public class LaunchFireBallScript : MonoBehaviour {
 	
 		if (gameLogic.GamePaused ()) 
 			return;
-
+		// this also detects tap events
 		if (Input.GetMouseButtonDown (0)) {
 			GameObject fball = (GameObject)Instantiate (fireballToLaunch);
 			fball.transform.rotation = transform.rotation;

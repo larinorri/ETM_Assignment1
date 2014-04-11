@@ -43,6 +43,12 @@ public class RunGUI : MonoBehaviour {
 			          Input.location.lastData.longitude.ToString());
 		}
 
+		// display accellerometer vital data
+		GUI.skin.label.fontSize = 15;
+		GUI.Label(new Rect (Screen.width/2 - 100, Screen.height - 25, 200, 25), "Device Tilt: X " +
+		          Input.acceleration.x.ToString() + ", Y " + Input.acceleration.y.ToString() + 
+		          ", Z " + Input.acceleration.z.ToString());
+
 	}
 
 	void Start() {
