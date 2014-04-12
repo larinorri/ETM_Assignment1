@@ -1,13 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MovePlatform.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NetworkingScript.cs">
     <Files>
-      <File FileName="Assets/LaunchFireBallScript.cs" Line="6" Column="37" />
-      <File FileName="Assets/MouseLook.cs" Line="64" Column="4" />
-      <File FileName="Assets/InGameGUI.cs" Line="1" Column="1" />
-      <File FileName="Assets/RunGUI.cs" Line="52" Column="26" />
-      <File FileName="Assets/MovePlatform.cs" Line="23" Column="15" />
-      <File FileName="Assets/FireballScript.cs" Line="17" Column="3" />
+      <File FileName="Assets/LaunchFireBallScript.cs" Line="19" Column="34" />
+      <File FileName="Assets/MouseLook.cs" Line="1" Column="1" />
+      <File FileName="Assets/InGameGUI.cs" Line="53" Column="55" />
+      <File FileName="Assets/RunGUI.cs" Line="22" Column="31" />
+      <File FileName="Assets/MovePlatform.cs" Line="1" Column="1" />
+      <File FileName="Assets/FireballScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/NetworkingScript.cs" Line="26" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

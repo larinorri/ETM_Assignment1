@@ -51,6 +51,7 @@
      <Compile Include="Assets\LaunchFireBallScript.cs" />
      <Compile Include="Assets\MouseLook.cs" />
      <Compile Include="Assets\MovePlatform.cs" />
+     <Compile Include="Assets\NetworkingScript.cs" />
      <Compile Include="Assets\RunGUI.cs" />
      <Compile Include="Assets\SpinMenuCam.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
