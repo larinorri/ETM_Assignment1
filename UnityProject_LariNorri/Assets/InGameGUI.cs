@@ -17,7 +17,7 @@ public class InGameGUI : MonoBehaviour {
 	void Start() {
 		countDown = 60.999f; // 1 minute
 		winnar = false;
-		Input.location.Start (1,1);
+		//Input.location.Start ();
 	}
 
 	// Use this for initialization
@@ -40,17 +40,18 @@ public class InGameGUI : MonoBehaviour {
 		if (Input.location.isEnabledByUser) 
 		{
 			// display current results
-			GUI.Label(new Rect (5, Screen.height - 60, 200, 40), "Latitude:\t\t" + 
+			GUI.Label(new Rect (5, Screen.height - 60, 200, 40), "Latitude: " + 
 			          Input.location.lastData.latitude.ToString());
-			GUI.Label(new Rect (5, Screen.height - 35, 200, 40), "Longitude:\t" + 
+			GUI.Label(new Rect (5, Screen.height - 35, 200, 35), "Longitude: " + 
 			          Input.location.lastData.longitude.ToString());
 		}
 
-		// display accellerometer vital data
-		GUI.skin.label.fontSize = 15;
-		GUI.Label(new Rect (Screen.width/2 - 100, Screen.height - 25, 200, 25), "Device Tilt: X " +
-		          Input.acceleration.x.ToString() + ", Y " + Input.acceleration.y.ToString() + 
-		          ", Z " + Input.acceleration.z.ToString());
+        // display accellerometer vital data
+        GUI.skin.label.fontSize = 15;
+        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+        GUI.Label(new Rect(Screen.width / 2 - 150, Screen.height - 25, 300, 25), "Device Tilt: X " +
+                  Input.acceleration.x.ToString("0.0") + ", Y " + Input.acceleration.y.ToString("0.0") +
+                  ", Z " + Input.acceleration.z.ToString("0.0"));
 	
 		// build components for main menu
 		GUI.color = new Color(1,0,0);

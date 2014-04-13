@@ -48,7 +48,7 @@ public class MouseLook : MonoBehaviour {
 			rotationX += Input.acceleration.x * sensitivityX;
 			rotationX = Mathf.Clamp (rotationX, minimumX, maximumX); // had to add this
 			
-			rotationY += Input.acceleration.y * sensitivityY;
+			rotationY += Input.acceleration.z * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
 			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);

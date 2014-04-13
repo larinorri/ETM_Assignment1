@@ -34,25 +34,48 @@ public class RunGUI : MonoBehaviour {
 		string gpsStatus = (Input.location.isEnabledByUser) ? "Enabled" : "Disabled";
 		GUI.Label(new Rect (Screen.width - 150, Screen.height - 30, 150, 30), "GPS is " + gpsStatus);
 
-		if (Input.location.isEnabledByUser) 
-		{
-			// display current results
-			GUI.Label(new Rect (5, Screen.height - 60, 200, 40), "Latitude:\t\t" + 
-			          Input.location.lastData.latitude.ToString());
-			GUI.Label(new Rect (5, Screen.height - 35, 200, 40), "Longitude:\t" + 
-			          Input.location.lastData.longitude.ToString());
-		}
+        if (Input.location.isEnabledByUser)
+        {
+            // display current results
+            GUI.Label(new Rect(5, Screen.height - 60, 200, 40), "Latitude: " +
+                      Input.location.lastData.latitude.ToString());
+            GUI.Label(new Rect(5, Screen.height - 35, 200, 35), "Longitude: " +
+                      Input.location.lastData.longitude.ToString());
+        }
 
 		// display accellerometer vital data
 		GUI.skin.label.fontSize = 15;
-		GUI.Label(new Rect (Screen.width/2 - 100, Screen.height - 25, 200, 25), "Device Tilt: X " +
-		          Input.acceleration.x.ToString() + ", Y " + Input.acceleration.y.ToString() + 
-		          ", Z " + Input.acceleration.z.ToString());
+		GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+        GUI.Label(new Rect (Screen.width/2 - 150, Screen.height - 25, 300, 25), "Device Tilt: X " +
+                  Input.acceleration.x.ToString("0.0") + ", Y " + Input.acceleration.y.ToString("0.0") +
+                  ", Z " + Input.acceleration.z.ToString("0.0"));
 
 	}
 
-	void Start() {
-		Input.location.Start (1,1);
+    IEnumerator Start()
+    {
+		// sample code from docs
+        if (!Input.location.isEnabledByUser)
+            yield break;
+        Input.location.Start();
+        int maxWait = 20;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
+            yield return new WaitForSeconds(1);
+            maxWait--;
+        }
+        if (maxWait < 1) {
+            print("Timed out");
+            yield break;
+        }
+        if (Input.location.status == LocationServiceStatus.Failed) {
+            print("Unable to determine device location");
+            yield break;
+        } else
+            print("Location: " + Input.location.lastData.latitude + " " 
+                + Input.location.lastData.longitude + " " 
+                + Input.location.lastData.altitude + " " 
+                + Input.location.lastData.horizontalAccuracy + " " 
+                + Input.location.lastData.timestamp);
 	}
 	void OnDisable() {
 		//Input.location.Stop ();
